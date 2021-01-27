@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar  6 14:02:58 2020
-
-@author: liang
 """
 #%%
 import torch
