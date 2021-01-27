@@ -7,6 +7,8 @@ published at SPIE Medical Imaging: Image Processing, 2021
 """
 import sys
 sys.path.append('../../core')
+import sys
+sys.path.append('../')
 #%%
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,13 +19,14 @@ import skimage
 import skimage.io as io
 import skimage.transform as sk_transform
 import argparse
-from RobustDNN_PGD_OOD import pgd_attack
+from PGD_OOD import pgd_attack
 from Lumbar_Dataset import DiskSet
+from Lumbar_Dataset import DiskSetexample
 from Resnet18Unet import Resnet18Unet
 from Disk_regseg_train import dice, dice_shape
 #%%
 def load_dataset(data_path, batch_size, num_workers):    
-    Dataset_test = DiskSet(data_path, '100_test.txt')
+    Dataset_test = DiskSetexample(data_path, 'aug_data_example_test.txt')
     loader_test = torch.utils.data.DataLoader(dataset=Dataset_test,batch_size = batch_size,
                                               shuffle = False, num_workers=num_workers)    
     return loader_test

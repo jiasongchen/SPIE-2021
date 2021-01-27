@@ -8,7 +8,7 @@ published at SPIE Medical Imaging: Image Processing, 2021
 #%%
 import torch
 from torch import optim
-from RobustDNN_PGD import get_noise_init, normalize_grad_, get_pgd_loss_fn_by_name, clip_norm_
+from PGD import get_noise_init, normalize_grad_, clip_norm_
 #%%
 def run_model_(model, X):
     Z=model(X)
@@ -29,10 +29,7 @@ def pgd_attack(model, Xin, Y, Xout, noise_norm, norm_type, max_iter, step,
     #-----------------------------------------------------
     model.eval()#set model to evaluation mode
     #-----------------------------------------------------
-    if Y is not None:
-        loss_fn=get_pgd_loss_fn_by_name(loss_fn)
-    else:
-        loss_fn=torch.nn.MSELoss()
+    loss_fn=torch.nn.MSELoss()
     #-----------------------------------------------------
     if run_model is None:
         run_model=run_model_    
@@ -94,4 +91,3 @@ def pgd_attack(model, Xin, Y, Xout, noise_norm, norm_type, max_iter, step,
     #---------------------------
     return Xn
 #%%
-

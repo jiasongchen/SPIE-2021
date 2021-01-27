@@ -16,12 +16,13 @@ import skimage.io as io
 import skimage.transform as sk_transform
 import argparse
 from sklearn.metrics import roc_curve, roc_auc_score
-from PGD_OOD import pgd_attack
-from Resnet18Unet import Resnet18Unet
-from Resnet18Unet_ab import Resnet18Unet_ab
-from Disk_regseg_train import dice, dice_shape
 import sys
 sys.path.append('../IND')
+sys.path.append('../')
+from PGD_OOD import pgd_attack
+from Resnet18Unet import Resnet18Unet
+#from Resnet18Unet_ab import Resnet18Unet_ab
+from Disk_regseg_train import dice, dice_shape
 from Lumbar_Dataset import DiskSet
 from Lumbar_Dataset import DiskSet_example
 #%%
