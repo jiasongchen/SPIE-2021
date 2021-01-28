@@ -29,7 +29,8 @@ def pgd_attack(model, Xin, Y, Xout, noise_norm, norm_type, max_iter, step,
     #-----------------------------------------------------
     model.eval()#set model to evaluation mode
     #-----------------------------------------------------
-    loss_fn=torch.nn.MSELoss()
+    if loss_fn is None:
+        loss_fn=torch.nn.MSELoss()
     #-----------------------------------------------------
     if run_model is None:
         run_model=run_model_    
